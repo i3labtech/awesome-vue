@@ -1,10 +1,10 @@
 import axios from 'axios'
 
 const http = axios.create({
-  baseURL: process.env.API_URL || 'http://localhost:8080',
+  baseURL: process.env.API_URL || 'http://localhost:8080/api/',
   headers: {
-    'Content-Type': 'Application/json',
-    Authorizarion: `Bearer ${localStorage.getItem('USER_TOKEN')}`
+    'Content-Type': 'application/json;charset=UTF-8',
+    Authorization: `Bearer ${localStorage.getItem('USER_TOKEN')}`
   }
 })
 

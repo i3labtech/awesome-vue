@@ -1,11 +1,10 @@
-export default {
-
-  setLocalStorageItem (key: string, value: any) {
+export default class LocalStorage {
+  static setLocalStorageItem (key: string, value: any) {
     if (value instanceof Object) value = JSON.stringify(value)
     localStorage.setItem(key, value)
-  },
+  }
 
-  getLocalStorageItem (key: string) {
+  static getLocalStorageItem (key: string) {
     const item = localStorage.getItem(key)
     // if(item?.substr(0,1) === '{' && item?.substr(item.length-1, 1) === '}'){
     //   return JSON.parse(item)
@@ -17,5 +16,4 @@ export default {
       return item
     }
   }
-
 }
