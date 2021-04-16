@@ -10,7 +10,7 @@
           <div class="form-group">
             <input type="password" v-model="form.password" class="form-control" placeholder="Password"  />
           </div>
-          <button class="btn btn-primary w-100">Login</button>
+          <base-button class="btn btn-primary w-100" nativeType="submit"> <i class="bi-star"/> Login </base-button>
         </div>
       </div>
     </div>
@@ -19,9 +19,15 @@
 
 <script>
 import Vue from 'vue'
+import BaseButton from '../../components/BaseButton'
+import { mapActions } from 'vuex'
+import { ActionTypes } from '@/store/modules/auth/types'
 
 export default Vue.extend({
   name: 'Login',
+  components: {
+    BaseButton
+  },
   data: () => ({
     form: {
       username: '',
@@ -30,8 +36,9 @@ export default Vue.extend({
   }),
   methods: {
     onSubmit () {
-      console.log(this.form)
-    }
+      this.login({ username: this.form.username, password: this.form.password })
+    },
+    ...mapActions('auth', [ActionTypes.LOGIN])
   }
 })
 </script>
