@@ -1,13 +1,12 @@
-
-import { LoginResponse, MutationTypes, State } from './types'
-import LocalStorage from '../../utils/localstorage'
+import { MutationTypes, State, UserProfile } from './types'
 
 export default {
-  [MutationTypes.SET_AUTHENTICATION] (state: State, payload: LoginResponse): void {
-    state.token = payload.token
-    state.user = payload.user
-    LocalStorage.setLocalStorageItem('USER_TOKEN', state.token)
-    LocalStorage.setLocalStorageItem('USER', state.user)
-  }
 
+  [MutationTypes.SET_USER] (state: State, payload: UserProfile): void {
+    state.user = payload
+  },
+
+  [MutationTypes.SET_AUTH_TOKEN] (state: State, payload: string): void {
+    state.token = payload
+  }
 }

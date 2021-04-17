@@ -10,13 +10,22 @@ export interface State {
 export enum ActionTypes {
   LOGIN = 'login',
   LOGOUT = 'logout',
-  LOAD_TOKEN = 'loadToken'
+  LOAD_TOKEN = 'loadToken',
+  SET_USER = 'setUser',
+  SET_TOKEN = 'setToken'
 }
 
 export enum MutationTypes {
   SET_AUTHENTICATION = 'setAuthentication',
   SET_AUTH_TOKEN = 'setAuthToken',
   SET_USER = 'setUser'
+}
+
+export enum GettersTypes {
+  HAS_TOKEN = 'hasToken',
+  GET_USER = 'getUser',
+  GET_AUTHENTICATION = 'getAuthentication',
+  DECODED_TOKEN = 'decodedToken'
 }
 
 export interface LoginRequest {

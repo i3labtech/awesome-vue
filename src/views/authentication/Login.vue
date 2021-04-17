@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="onSubmit">
+  <form @submit.prevent="handleSubmit">
     <div class="login-page">
       <div class="card">
         <div class="card-header">Login</div>
@@ -32,11 +32,18 @@ export default Vue.extend({
     form: {
       username: '',
       password: ''
-    }
+    },
+    subbimited: false
   }),
   methods: {
-    onSubmit () {
+    handleSubmit (e) {
       this.login({ username: this.form.username, password: this.form.password })
+        .then(() => {
+          this.$router.push('/profile')
+        })
+        .catch(err => {
+          console.log(err)
+        })
     },
     ...mapActions('auth', [ActionTypes.LOGIN])
   }
