@@ -1,13 +1,28 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/profile">Profile</router-link> |
-      <router-link to="/login">Login</router-link>
-    </div>
+    <navbar v-if='showNavbar'/>
+
     <router-view/>
   </div>
 </template>
+
+<script>
+import Vue from 'vue'
+import Navbar from './components/Navbar'
+
+export default Vue.extend({
+  name: 'App',
+  components: {
+    Navbar
+  },
+  computed: {
+    showNavbar () {
+      return this.$route.name !== 'Login'
+    }
+  }
+
+})
+</script>
 
 <style lang="scss">
 #app {
