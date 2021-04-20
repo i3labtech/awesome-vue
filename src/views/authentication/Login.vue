@@ -36,10 +36,10 @@ export default Vue.extend({
     subbimited: false
   }),
   methods: {
-    handleSubmit (e) {
+    handleSubmit () {
       this.login({ username: this.form.username, password: this.form.password })
         .then(() => {
-          this.$router.push('/profile')
+          this.$router.push({ name: 'Profile' })
         })
         .catch(err => {
           console.log(err)
